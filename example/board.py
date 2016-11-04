@@ -15,27 +15,13 @@ def getNext(x):
 myscreen = curses.initscr()
 
 
-#for z in range(0,3):
-#	myscreen.clear()
-#	myscreen.border(0)
-#	for i in range(1+z,10+z):
-#		for j in range(1+z,10+z):
-#			myscreen.addstr(i,j,str(i-z))
-#	time.sleep(1)	
-#	myscreen.refresh()
-	
-	
-
-#myscreen.getch()
-
-#curses.endwin()
-
 total = []
 
 for i in range(0,10) :
 	total.append((getNum(),getNum()))
 
-while 1 :
+try:
+     while 1 :
 	myscreen.clear()
 	myscreen.border(0)
 	total_ = []
@@ -45,11 +31,12 @@ while 1 :
 		total_.append((getNext(i[0]),getNext(i[1])))
 
 	total = total_
+	time.sleep(0.05)
 	myscreen.refresh()
-	time.sleep(1)
+except:
+	myscreen.getch()
+
 	
-
-
+myscreen.clear()
 myscreen.getch()
-
 curses.endwin()
