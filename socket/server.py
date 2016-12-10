@@ -12,6 +12,8 @@ while 1:
 	conn.send('Hi this is server')
 	data = conn.recv(1024)
 	if not data : break
+	if data == 'Yes' :
+		print "He said yes"
 	print addr
 	print 'I got your message = ' + data
 conn.close()
