@@ -1,5 +1,6 @@
 import socket
 import threading
+import json
 
 HOST = ''
 PORT = 1989
@@ -10,9 +11,13 @@ s.listen(1)
 conn,addr = s.accept()
 
 def getMsg(conn,addr) :
+	data = conn.recv(1024)
+	data = json.loads(data)
+	Id = data['Id']
+	Name = data['Name']
 	while True :
 		data = conn.recv(1024)
-		print str(addr) + " : output --" + str(data) + "\nInput : "
+		print str(Name) + " : output --" + str(data) + "\nInput : "
 		if not data : continue
 		if data == "end" : break
 
