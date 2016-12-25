@@ -1,5 +1,6 @@
 import socket
 import threading
+import json
 
 #HOST = '173.255.237.230'
 HOST = ''
@@ -14,6 +15,9 @@ def getMsg(conn) :
 		if data == "end" : break
 
 def sendMsg(conn) :
+	msg = {'Id' : 123,'Name' : 'Yanglong'}
+	msg = json.dumps(msg)
+	conn.send(msg)
 	while True :
 		data = raw_input('Input :\n')
 		conn.send(data)
