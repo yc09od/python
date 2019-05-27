@@ -8,11 +8,11 @@ class Motor:
     link_2 = -1
     link_3 = -1
     link_4 = -1
-    default_value = [0,0,0,0]
-    forward_value = [1,0,1,0]
-    backward_value = [0,1,0,1]
-    turn_left_value = [1,0,1,0]
-    turn_right_value = [0,1,0,1]
+    default_value = [0, 0, 0, 0]
+    forward_value = [1, 0, 1, 0]
+    backward_value = [0, 1, 0, 1]
+    turn_left_value = [1, 0, 1, 0]
+    turn_right_value = [0, 1, 0, 1]
 
     def __init__(self, ports):
         self.link_1 = ports[0]
@@ -25,43 +25,43 @@ class Motor:
         gpio.setup(self.link_3, gpio.OUT)
         gpio.setup(self.link_4, gpio.OUT)
 
-    def intToGpio(self, i):
+    def int_to_gpio(self, i):
         print(i)
         if i == 0:
             return gpio.LOW
         else:
             return gpio.HIGH
 
-    def setPort(self, values):
+    def set_port(self, values):
         index = 0
-        gpio.output(self.link_1, self.intToGpio(values[index]))
+        gpio.output(self.link_1, self.int_to_gpio(values[index]))
         index += 1
-        gpio.output(self.link_2, self.intToGpio(values[index]))
+        gpio.output(self.link_2, self.int_to_gpio(values[index]))
         index += 1
-        gpio.output(self.link_3, self.intToGpio(values[index]))
+        gpio.output(self.link_3, self.int_to_gpio(values[index]))
         index += 1
-        gpio.output(self.link_4, self.intToGpio(values[index]))
+        gpio.output(self.link_4, self.int_to_gpio(values[index]))
 
     def stop(self):
-        self.setPort(self.default_value)
+        self.set_port(self.default_value)
 
     def forward(self, t):
-        self.setPort(self.forward_value)
+        self.set_port(self.forward_value)
         time.sleep(t)
         self.stop()
 
     def backward(self, t):
-        self.setPort(self.backward_value)
+        self.set_port(self.backward_value)
         time.sleep(t)
         self.stop()
 
     def turn_left(self, t):
-        self.setPort(self.turn_left_value)
+        self.set_port(self.turn_left_value)
         time.sleep(t)
         self.stop()
 
     def turn_right(self, t):
-        self.setPort(self.turn_right_value)
+        self.set_port(self.turn_right_value)
         time.sleep(t)
         self.stop()
 
