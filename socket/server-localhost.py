@@ -8,13 +8,13 @@ s.bind((HOST,PORT))
 s.listen(1)
 conn,addr = s.accept()
 while 1:
-	conn.send('Hi this is server')
+	conn.send('Hi this is server'.encode())
 	data = conn.recv(1024)
 	if not data : break
 	if data == 'Yes' :
-		print "He said yes"
-	print addr
-	print 'I got your message = ' + data
+		print("He said yes")
+	print(str(addr))
+	print('I got your message = ' + str(data))
 conn.close()
 s.close()
 
